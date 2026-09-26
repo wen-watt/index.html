@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPL, Token-2022, WNS, WEN, RWA — An Almanac of One Idea</title>
+<meta name="description" content="A visual, sourced walkthrough of how SPL Token, Token-2022, WNS and WEN relate to real-world-asset tokenization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="space"></div>
+<div class="stars"></div>
+<div class="stars layer2"></div>
+<div class="veil"></div>
+<div class="streaks">
+  <span class="streak"></span>
+  <span class="streak teal"></span>
+  <span class="streak"></span>
+  <span class="streak violet"></span>
+  <span class="streak"></span>
+  <span class="streak teal"></span>
+  <span class="streak violet"></span>
+  <span class="streak"></span>
+</div>
+
+<div class="site-shell">
+  <div id="sidebar-slot"></div>
+
+  <main class="wrap">
+<div class="wrap-inner">
+
+
+  <h1>SPL, Token-2022, WNS, WEN, RWA: An Almanac of One Idea in Motion</h1>
+  <p class="intro">
+    Not a timeline of dates — a record of direction. Every layer here answers the same question a little more completely: can an asset carry its own rules, instead of relying on trust between platforms? <strong>SPL</strong> gave Solana a shared token language. <strong>Token-2022</strong> taught that language to describe hooks, metadata, and groups. <strong>WNS</strong> packaged those capabilities into a working standard for NFTs. <strong>WEN</strong> put it into practice with a real, circulating asset. And <strong>RWA tokenization</strong> draws on the same foundation independently — not the next step in the chain, but a parallel course charted from the same starting point, toward the same idea: verifiable trust, built into the technology itself.
+  </p>
+
+  <div class="backstory">
+    <h2>Backstory: From a Poem to a Protocol</h2>
+    <p>Before any of this had a name, Solana's base token standard could only do three things — mint, transfer, and burn. Any more complex behavior — royalties, restricted transfers, confidential balances — had to be bolted on through separate wrapper programs and external metadata accounts. That worked, but it left gaps: royalties could be skipped by trading directly wallet-to-wallet, and every NFT needed several linked accounts just to exist, adding cost and fragility.</p>
+    <p>Token-2022 closed that gap by moving the logic inside the token itself, and <strong>WNS</strong> (Wen New Standard) was the first standard built to use it for NFTs — folding metadata, grouping, and enforceable royalties into a single mint. Its first real test wasn't a financial product at all: in January, Jupiter Exchange's pseudonymous founder "weremeow" wrote a short poem, "A Love Letter to Wen Bros," in response to the community's running joke of asking "wen token?" That poem was minted as a single NFT under the new WNS standard, then fractionalized into a trillion circulating tokens — each one a share of the same original poem, trading like any other token on the network.</p>
+    <p>It was playful, but it worked under real usage — proving that royalties enforced through Transfer Hooks, and metadata embedded directly at the mint, held up outside a lab. That's the part builders elsewhere paid attention to: not the meme, but the fact that the mechanism underneath it didn't need to be taken on faith. <strong>RWA tokenization</strong> now draws on that same Token-2022 layer directly — Transfer Hooks and Permanent Delegate — for compliance and access logic, following its own, independent course rather than continuing WNS's NFT-specific path.</p>
+
+    <div class="glossary">
+      <div class="gloss-card">
+        <h3>SPL Token</h3>
+        <p>Solana's original, base-level token standard — a simple balance model for minting, burning, and transferring tokens. <span class="where">Where it applies:</span> still underlies most everyday Solana tokens and liquidity pairs; its simplicity keeps costs low but leaves no room for built-in compliance or royalty logic.</p>
+      </div>
+      <div class="gloss-card">
+        <h3>Token-2022 (Token Extensions)</h3>
+        <p>An extensible upgrade to SPL Token using a TLV structure, adding optional modules — Transfer Hooks, Confidential Transfers, Permanent Delegate, Interest-Bearing tokens — directly at the mint level. <span class="where">Where it applies:</span> lets issuers attach fees, freezes, KYC checks, or interest logic to a token without external wrapper programs.</p>
+      </div>
+      <div class="gloss-card">
+        <h3>WNS (Wen New Standard)</h3>
+        <p>An application-layer configuration built on Token-2022, purpose-built for NFTs: it embeds metadata directly into the mint and enforces royalties via Transfer Hooks, replacing older external-metadata systems like Metaplex. <span class="where">Where it applies:</span> leaner, faster NFT collections with royalties that can't be bypassed by wallet-to-wallet transfers.</p>
+      </div>
+      <div class="gloss-card">
+        <h3>WEN</h3>
+        <p>The token born from weremeow's fractionalized NFT poem — the first live case that proved WNS and Token-2022 extensions hold up under real, everyday usage. <span class="where">Where it applies:</span> a community and cultural asset first; its lasting contribution is as a working proof of practice, not a compliance instrument.</p>
+      </div>
+      <div class="gloss-card">
+        <h3>RWA (Real-World Asset Tokenization)</h3>
+        <p>Uses Token-2022's Transfer Hook and Permanent Delegate extensions directly — independent of WNS — to embed KYC, geo-restrictions, and issuer controls into a token's transfer rules. <span class="where">Where it applies:</span> tokenized treasuries, funds, and instruments that need enforceable, protocol-level compliance rather than rules enforced by a platform's goodwill.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="roadmap-title">The course, laid out</p>
+
+  <div class="roadmap">
+    <div class="chain">
+      <div class="node">
+        <p class="node-tag">Starting point</p>
+        <div class="node-card">
+          <p class="node-title">SPL Token</p>
+          <p class="node-note">Solana's shared token standard. A simple, reliable balance model — mint, transfer, burn — with no built-in behavior logic beyond that.</p>
+        </div>
+      </div>
+      <div class="connector"></div>
+      <div class="node">
+        <p class="node-tag">Capability unlocked</p>
+        <div class="node-card">
+          <p class="node-title">Token-2022</p>
+          <p class="node-note">An extensible token framework: Transfer Hooks, Metadata Pointer, Group/Member, Confidential Transfers — logic that now lives inside the token itself.</p>
+        </div>
+      </div>
+      <div class="connector"></div>
+      <div class="node">
+        <p class="node-tag">Standard formed</p>
+        <div class="node-card">
+          <p class="node-title">WNS</p>
+          <p class="node-note">Bundles several extensions into one coherent NFT interface — metadata, enforceable royalties, and grouping, all inside a single mint.</p>
+        </div>
+      </div>
+      <div class="connector"></div>
+      <div class="node">
+        <p class="node-tag">Put into practice</p>
+        <div class="node-card">
+          <p class="node-title">WEN</p>
+          <p class="node-note">Weremeow's poem, minted as an NFT and fractionalized into circulating tokens — the first working, real-world test of what WNS could actually do.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch-row">
+    <div class="branch">
+      <div class="branch-line"></div>
+      <div class="branch-node">
+        <p class="node-tag teal">A parallel course</p>
+        <div class="node-card">
+          <p class="node-title">RWA Tokenization</p>
+          <p class="node-note">Draws on the same Token-2022 layer directly — Transfer Hook, Permanent Delegate — for compliance and access logic, independent of the WNS NFT configuration entirely.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><i class="swatch solid"></i> direct technical continuity</span>
+    <span><i class="swatch dash"></i> shared foundation, independent course</span>
+  </div>
+
+  <div class="notes">
+    <h2>Short notes</h2>
+    <div class="note-item"><p><span class="k">WEN is not RWA.</span> WEN demonstrates what the underlying protocol can do through one working asset — it is a proof of practice, not a compliance-grade financial instrument.</p></div>
+    <div class="note-item"><p><span class="k">WNS is a configuration, not a platform.</span> It's a set of Token-2022 settings tuned for NFT semantics, not a separate blockchain layer of its own.</p></div>
+    <div class="note-item"><p><span class="k">What WNS and WEN actually changed</span> is enforceability — rules that used to depend on a marketplace's goodwill now live inside the token, verifiable by anyone.</p></div>
+    <div class="note-item"><p><span class="k">Why RWA builders are watching</span> is simple: a standard that already works reliably in the open, under real usage, is a more trustworthy foundation to build on than one that only exists on paper.</p></div>
+  </div>
+
+  <div class="sources">
+    <h2>Sources</h2>
+
+    <h3>Primary reference</h3>
+    <ul>
+      <li><a href="../spl-solana-program-library-token-2022-wns.html">wen-crypto.com — SPL Solana Program Library, Token-2022, WNS</a></li>
+    </ul>
+
+    <h3>Protocol &amp; documentation</h3>
+    <ul>
+      <li><a href="https://solana.com/solutions/token-extensions">solana.com/solutions/token-extensions</a></li>
+      <li><a href="https://solana.com/docs/tokens/extensions">solana.com/docs/tokens/extensions</a></li>
+      <li><a href="https://solana.com/docs/tokens/extensions/transfer-hook">solana.com/docs/tokens/extensions/transfer-hook</a></li>
+      <li><a href="https://github.com/solana-program">github.com/solana-program</a></li>
+      <li><a href="https://crates.io/crates/spl-token-2022">crates.io/crates/spl-token-2022</a></li>
+      <li><a href="https://discuss.jup.ag/t/wen-new-standard-wns-0-0/133">discuss.jup.ag — Wen New Standard (WNS 0.0)</a></li>
+    </ul>
+
+    <h3>Independent technical analysis</h3>
+    <ul>
+      <li><a href="https://chainstack.com/solana-transfer-hooks-anchor-token-2022">chainstack.com — Solana Transfer Hooks &amp; Anchor Token-2022</a></li>
+      <li><a href="https://rareskills.io/post/token-2022">rareskills.io — Token-2022</a></li>
+      <li><a href="https://www.quicknode.com/guides/solana-development/spl-tokens/token-2022/overview">quicknode.com — Token-2022 overview</a></li>
+      <li><a href="https://docs.phantom.com/developer-powertools/solana-token-extensions-token22">docs.phantom.com — Solana Token Extensions</a></li>
+      <li><a href="https://phantom.app/learn/crypto-101/solana-token-extensions">phantom.app — Solana Token Extensions</a></li>
+      <li><a href="https://www.gate.com/ru/learn/articles/what-is-wen-all-you-need-to-know-about-wen/5046">gate.com — What is WEN</a></li>
+    </ul>
+
+    <h3>Origin story &amp; verification</h3>
+    <ul>
+      <li><a href="https://www.dlnews.com/articles/defi/jupiter-wen-airdrop-introduces-new-solana-nft-standard/">dlnews.com — Jupiter WEN airdrop introduces new Solana NFT standard</a></li>
+      <li><a href="https://decrypt.co/214282/wen-token-over-million-wallets-eligible-solana-meme-coin-airdrop">decrypt.co — WEN token airdrop</a></li>
+      <li><a href="https://nftnow.com/news/jupiter-exchange-debuts-wen-on-new-token-launchpad/">nftnow.com — Jupiter Exchange debuts WEN</a></li>
+      <li><a href="https://opensea.io/token/solana/WENWENvqqNya429ubCdR81ZmD69brwQaaBYY6p3LCpk">opensea.io — WEN token / NFT record</a></li>
+      <li><a href="https://dappradar.com/dapp/wen">dappradar.com — WEN project page</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    Educational reference material. Compiled from public, independently verifiable sources listed above. Not financial advice.
+  </footer>
+
+
+</div>
+  <div id="footer-slot"></div>
+
+  </main>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/nav.js" data-prefix="../"></script>
+</body>
+</html>

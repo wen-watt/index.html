@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPL to Token-2022 to WNS to WEN to RWA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c14;
+    --panel:#161b26;
+    --panel-line:#333c4a;
+    --ink:#e9ebee;
+    --ink-dim:#8d97a6;
+    --amber:#e0a444;
+    --teal:#57b3ad;
+    --line-solid:#5a6478;
+    --line-dash:#6b5a3c;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    padding:48px 24px 64px;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* ---------- Dynamic space background ---------- */
+  .space{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(87,179,173,0.16), transparent 55%),
+      radial-gradient(ellipse at 80% 75%, rgba(224,164,68,0.12), transparent 55%),
+      radial-gradient(ellipse at 60% 10%, rgba(120,110,220,0.14), transparent 50%),
+      #0a0c14;
+    background-size:200% 200%;
+    animation:drift 40s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    0%{background-position:0% 0%, 100% 100%, 50% 0%;}
+    100%{background-position:20% 30%, 80% 70%, 40% 20%;}
+  }
+  .stars{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background-image:
+      radial-gradient(1.5px 1.5px at 10% 20%, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1.5px 1.5px at 30% 70%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 50% 15%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1.5px 1.5px at 70% 45%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 85% 80%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1.5px 1.5px at 92% 25%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 45% 55%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1px 1px at 60% 85%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 25% 40%, rgba(255,255,255,0.6), transparent);
+    background-repeat:repeat;
+    background-size:600px 600px;
+    animation:twinkle 6s ease-in-out infinite alternate, panSky 90s linear infinite;
+    opacity:0.5;
+  }
+  @keyframes twinkle{
+    0%{opacity:0.35;}
+    100%{opacity:0.65;}
+  }
+  @keyframes panSky{
+    from{background-position:0 0;}
+    to{background-position:-600px 300px;}
+  }
+  .veil{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:linear-gradient(180deg, rgba(10,12,20,0.55), rgba(10,12,20,0.75));
+  }
+
+  .wrap{max-width:980px;margin:0 auto;position:relative;z-index:1;}
+
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(28px,4vw,42px);
+    line-height:1.15;
+    margin:0 0 20px;
+    max-width:16ch;
+  }
+  .intro{
+    max-width:64ch;
+    color:var(--ink-dim);
+    font-size:16px;
+    margin-bottom:48px;
+  }
+  .intro strong{color:var(--ink);font-weight:500;}
+
+  /* --- Roadmap --- */
+  .roadmap{
+    display:flex;
+    align-items:flex-start;
+    gap:0;
+    position:relative;
+    margin-bottom:20px;
+  }
+  .chain{
+    display:flex;
+    align-items:stretch;
+    flex:1;
+    min-width:0;
+  }
+  .node{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .node-card{
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:var(--radius);
+    padding:16px 14px;
+    min-height:100px;
+  }
+  .node-title{
+    font-weight:600;
+    font-size:15px;
+    margin:0 0 4px;
+  }
+  .node-tag{
+    font-size:11px;
+    letter-spacing:.02em;
+    color:var(--amber);
+    margin:0 0 8px;
+  }
+  .node-tag.teal{color:var(--teal);}
+  .node-note{
+    font-size:13px;
+    color:var(--ink-dim);
+    margin:0;
+  }
+  .connector{
+    flex:0 0 28px;
+    align-self:center;
+    height:2px;
+    background:var(--line-solid);
+    position:relative;
+    top:-42px;
+  }
+  .connector::after{
+    content:"";
+    position:absolute;
+    right:-1px;top:50%;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--line-solid);
+    transform:translateY(-50%);
+  }
+
+  /* --- Branch to RWA --- */
+  .branch-row{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:-8px;
+  }
+  .branch{
+    width:56%;
+    display:flex;
+    align-items:flex-start;
+    gap:0;
+  }
+  .branch-line{
+    flex:0 0 40px;
+    align-self:center;
+    height:2px;
+    border-top:2px dashed var(--line-dash);
+    margin-top:20px;
+  }
+  .branch-node{flex:1;}
+  .branch-node .node-card{border-style:dashed;border-color:var(--line-dash);}
+
+  .legend{
+    display:flex;
+    gap:24px;
+    margin:36px 0 44px;
+    font-size:13px;
+    color:var(--ink-dim);
+    flex-wrap:wrap;
+  }
+  .legend span{display:inline-flex;align-items:center;gap:8px;}
+  .swatch{width:22px;height:2px;display:inline-block;}
+  .swatch.solid{background:var(--line-solid);}
+  .swatch.dash{border-top:2px dashed var(--line-dash);}
+
+  .notes{
+    border-top:1px solid var(--panel-line);
+    padding-top:28px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 32px;
+  }
+  .notes h2{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:18px;
+    margin:0 0 8px;
+    grid-column:1/-1;
+  }
+  .note-item p{margin:0;font-size:13.5px;color:var(--ink-dim);}
+  .note-item .k{color:var(--ink);font-weight:500;}
+
+  footer{
+    margin-top:48px;
+    font-size:12px;
+    color:var(--ink-dim);
+    border-top:1px solid var(--panel-line);
+    padding-top:16px;
+  }
+  footer a{color:var(--ink-dim);}
+
+  /* --- Mobile --- */
+  @media (max-width:720px){
+    .chain{flex-direction:column;}
+    .connector{
+      display:block;
+      width:2px;height:24px;
+      align-self:flex-start;
+      margin-left:16px;
+      top:0;
+    }
+    .connector::after{right:auto;left:-2px;top:auto;bottom:-1px;}
+    .branch-row{justify-content:flex-start;margin-top:8px;}
+    .branch{width:100%;flex-direction:column;}
+    .branch-line{
+      border-top:none;
+      border-left:2px dashed var(--line-dash);
+      width:2px;height:24px;
+      margin:0 0 0 16px;
+      flex:0 0 24px;
+    }
+    .notes{grid-template-columns:1fr;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .space, .stars{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="space"></div>
+<div class="stars"></div>
+<div class="veil"></div>
+
+<div class="wrap">
+
+  <h1>From SPL to RWA: how one standard taught Solana to keep its own promises</h1>
+  <p class="intro">
+    Five layers, five levels of abstraction, one idea running through all of them: an asset's rules should live inside the asset itself, not in agreements between platforms. <strong>SPL</strong> gave Solana a shared token language. <strong>Token-2022</strong> taught that language to talk about hooks, metadata, and groups. <strong>WNS</strong> packaged those capabilities into a standard for NFTs. <strong>WEN</strong> proved it works with real money moving through it. And the <strong>RWA</strong> layer draws on the same foundation independently — not a direct continuation of the chain, but a parallel application of the same idea.
+  </p>
+
+  <div class="roadmap">
+    <div class="chain">
+      <div class="node">
+        <p class="node-tag">2020 - foundation</p>
+        <div class="node-card">
+          <p class="node-title">SPL Token</p>
+          <p class="node-note">Solana's shared token standard. A simple balance model, with no built-in behavior logic.</p>
+        </div>
+      </div>
+      <div class="connector"></div>
+      <div class="node">
+        <p class="node-tag">2024 - extension</p>
+        <div class="node-card">
+          <p class="node-title">Token-2022</p>
+          <p class="node-note">TLV-based extensions: Transfer Hook, Metadata Pointer, Group/Member, Confidential Transfers.</p>
+        </div>
+      </div>
+      <div class="connector"></div>
+      <div class="node">
+        <p class="node-tag">2024 - standardization</p>
+        <div class="node-card">
+          <p class="node-title">WNS</p>
+          <p class="node-note">Bundles four extensions into one NFT interface: metadata, royalties, and groups inside a single mint.</p>
+        </div>
+      </div>
+      <div class="connector"></div>
+      <div class="node">
+        <p class="node-tag">2024 - practice</p>
+        <div class="node-card">
+          <p class="node-title">WEN</p>
+          <p class="node-note">Weremeow's poem, minted as an NFT and fractionalized into a trillion tokens. The first working case for WNS.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch-row">
+    <div class="branch">
+      <div class="branch-line"></div>
+      <div class="branch-node">
+        <p class="node-tag teal">parallel, not a successor</p>
+        <div class="node-card">
+          <p class="node-title">RWA Tokenization</p>
+          <p class="node-note">Uses the same Token-2022 layer directly (Transfer Hook, Permanent Delegate) for KYC gating and compliance, bypassing the WNS NFT configuration entirely.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><i class="swatch solid"></i> direct technical evolution</span>
+    <span><i class="swatch dash"></i> shared foundation, independent use</span>
+  </div>
+
+  <div class="notes">
+    <h2>Short notes</h2>
+    <div class="note-item"><p><span class="k">WEN is not RWA.</span> WEN demonstrates the protocol's capabilities through a meme coin, not a compliance-grade financial instrument.</p></div>
+    <div class="note-item"><p><span class="k">WNS is a configuration, not a platform.</span> It's a set of Token-2022 settings tuned for NFT semantics, not a separate blockchain layer.</p></div>
+    <div class="note-item"><p><span class="k">Direct impact of WEN/WNS</span> falls on NFT royalty economics and Solana's creator economy.</p></div>
+    <div class="note-item"><p><span class="k">Indirect impact</span> is proof that embedding business logic inside a token works commercially, which motivates RWA builders working on the same Token-2022 base.</p></div>
+  </div>
+
+  <footer>
+    Sources: discuss.jup.ag/t/wen-new-standard-wns-0-0/133 | solana.com/solutions/token-extensions | solana.com/docs/tokens/extensions/transfer-hook | phantom.app/learn/crypto-101/solana-token-extensions | decrypt.co/214282
+  </footer>
+
+</div>
+</body>
+</html>
