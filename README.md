@@ -37,30 +37,6 @@ Full list of 60 posts was not obtainable automatically — WordPress pagination
 in this session (search doesn't index those pages individually, and fetch requires a
 URL to have appeared in a prior search/fetch result first).
 
-21 real post URLs were recovered organically from links inside already-fetched pages:
-
-1. https://wen-crypto.com/2026/09/07/solanas-wns-roadmap-how-a-meme-cat-poem/ — done: `posts/solanas-wns-roadmap-how-a-meme-cat-poem.html`
-2. https://wen-crypto.com/2026/09/03/wns-w-token-2022-and-economic-solana-wen/ — done: `posts/wns-w-token-2022-and-economic-solana-wen.html`
-3. https://wen-crypto.com/2026/09/02/south-korea-cbdc-and-tokenization/ — done: `posts/south-korea-cbdc-and-tokenization.html`
-4. https://wen-crypto.com/2026/09/02/how-sol-achieved-proven-global-recognition-2022-2026/ — summarized on homepage
-5. https://wen-crypto.com/2026/09/02/ultimate-solana-token-2022-and-wen-compliance-and-testing/ — summarized on homepage
-6. https://wen-crypto.com/2026/01/08/wen-crypto-token-gitgub-com-release-planning/
-7. https://wen-crypto.com/2025/12/25/may-the-spirit-of-christmas-bring-you-an-unexpected-miracle-wen-cat/
-8. https://wen-crypto.com/2025/12/24/catlumpurr-kaula-lumpur-malaysia-jan-31-to-feb-1-2026-video-about-event/
-9. https://wen-crypto.com/2025/12/05/reddit-com-and-the-cryptocurrency-section-were-looking-for-history-correctly/
-10. https://wen-crypto.com/2025/12/03/wen-crypto-gold-coin-coinbase-roadmap-for-jupiter-bonk-memecoin-debuts-as-an-etp-today/
-11. https://wen-crypto.com/2025/11/18/meow-is-back-on-the-planetary-call-60-back-to-the-future-with-jup-friend-wen/
-12. https://wen-crypto.com/2025/11/15/what-is-wendys-backstory-and-what-is-new-world-wen-crypto/
-13. https://wen-crypto.com/2025/10/30/bsol-new-york-stock-exchange-wall-street/
-14. https://wen-crypto.com/2025/10/29/wen-x-bonk-playground-drops-toysmak-3rs-partners/
-15. https://wen-crypto.com/2025/10/25/drop-001-wen-x-bonk-october-29-12-pm-et-2025/
-16. https://wen-crypto.com/2025/10/22/wen-crypto-gears-up-for-global-expansion-partnership-with-elevate-pictures-signals-multimedia-revolution/
-17. https://wen-crypto.com/2025/10/21/solana-successfully-endures-peak-traffic-stress-test-during-wen-token-launch-catalyzing-wns-adoption/
-18. https://wen-crypto.com/2025/10/21/the-wen-crypto-usefulness-of-the-wns-standard-for-cryptocurrency-implementation/
-19. https://wen-crypto.com/2025/10/10/wen-crypto-egypt-cats/
-20. https://wen-crypto.com/2025/10/10/wen-crypto-x-elevate-pictures-and-next-future/
-21. https://wen-crypto.com/2025/09/23/wen-new-standard-wns-0-0-wen-crypto-inform/
-
 ## Fastest way to get all 60
 
 Since you run the site, the quickest accurate source is one of:
